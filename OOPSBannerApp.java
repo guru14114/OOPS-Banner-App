@@ -1,20 +1,57 @@
+/**
+ * OOPS Banner App
+ * UC6 - Static helper functions for characters
+ * @author Guru
+ * @version 1.5
+ */
 
 public class OOPSBannerApp {
 
     public static void main(String[] args) {
 
-        String[] banner = new String[] {
-                String.join("", " *****   ", " *****  ", "******   ", " ****** "),
-                String.join("", "*     * ", "*     * ", " *     * ", "  *        "),
-                String.join("", "*     * ", "*     * ", " *     * ", "* *      "),
-                String.join("", "*     * ", " *****   ", "******    ", " ***** "),
-                String.join("", "*     * ", "*       ", "*          ", "      *     "),
-                String.join("", "*     * ", "*       ", "*          ", "      *     "),
-                String.join("", " *****  ", "*       ", "*          ", " ***** ")
-        };
+        String[] o = getO();
+        String[] p = getP();
+        String[] s = getS();
 
-        for (String line : banner) {
-            System.out.println(line);
+        // print row by row
+        for (int i = 0; i < o.length; i++) {
+            System.out.println(o[i] + "  " + o[i] + "  " + p[i] + "  " + s[i]);
         }
+    }
+
+    static String[] getO() {
+        return new String[]{
+                " ***** ",
+                "*     *",
+                "*     *",
+                "*     *",
+                "*     *",
+                "*     *",
+                " ***** "
+        };
+    }
+
+    static String[] getP() {
+        return new String[]{
+                " ***** ",
+                "*     *",
+                "*     *",
+                " ***** ",
+                "*      ",
+                "*      ",
+                "*      "
+        };
+    }
+
+    static String[] getS() {
+        return new String[]{
+                " ***** ",
+                "*      ",
+                "*      ",
+                " ***** ",
+                "      *",
+                "      *",
+                " ***** "
+        };
     }
 }
