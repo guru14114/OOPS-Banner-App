@@ -1,57 +1,88 @@
 /**
  * OOPS Banner App
- * UC6 - Static helper functions for characters
+ * UC7 - Store Character Pattern in a Class
  * @author Guru
- * @version 1.5
+ * @version 1.7
  */
+
+import java.util.*;
 
 public class OOPSBannerApp {
 
-    public static void main(String[] args) {
+    // Static Inner Class
+    static class CharacterPatternMap {
 
-        String[] o = getO();
-        String[] p = getP();
-        String[] s = getS();
+        private char character;
+        private String[] pattern;
 
-        // print row by row
-        for (int i = 0; i < o.length; i++) {
-            System.out.println(o[i] + "  " + o[i] + "  " + p[i] + "  " + s[i]);
+        // Constructor
+        public CharacterPatternMap(char character, String[] pattern) {
+            this.character = character;
+            this.pattern = pattern;
+        }
+
+        public char getCharacter() {
+            return character;
+        }
+
+        public String[] getPattern() {
+            return pattern;
         }
     }
 
-    static String[] getO() {
-        return new String[]{
-                " ***** ",
-                "*     *",
-                "*     *",
-                "*     *",
-                "*     *",
-                "*     *",
-                " ***** "
-        };
+    public static void main(String[] args) {
+
+        // Create Character Pattern Objects
+        List<CharacterPatternMap> characterList = new ArrayList<>();
+
+        characterList.add(new CharacterPatternMap('O', new String[]{
+                " *** ",
+                "*   *",
+                "*   *",
+                "*   *",
+                " *** "
+        }));
+
+        characterList.add(new CharacterPatternMap('P', new String[]{
+                "**** ",
+                "*   *",
+                "**** ",
+                "*    ",
+                "*    "
+        }));
+
+        characterList.add(new CharacterPatternMap('S', new String[]{
+                " ****",
+                "*    ",
+                " *** ",
+                "    *",
+                "**** "
+        }));
+
+        String word = "OOPS";
+
+        printBanner(word, characterList);
     }
 
-    static String[] getP() {
-        return new String[]{
-                " ***** ",
-                "*     *",
-                "*     *",
-                " ***** ",
-                "*      ",
-                "*      ",
-                "*      "
-        };
-    }
+    private static void printBanner(String word, List<CharacterPatternMap> list) {
 
-    static String[] getS() {
-        return new String[]{
-                " ***** ",
-                "*      ",
-                "*      ",
-                " ***** ",
-                "      *",
-                "      *",
-                " ***** "
-        };
+        int height = 5;
+
+        for (int i = 0; i < height; i++) {
+
+            StringBuilder line = new StringBuilder();
+
+            for (char ch : word.toCharArray()) {
+
+                for (CharacterPatternMap cp : list) {
+
+                    if (cp.getCharacter() == ch) {
+                        line.append(cp.getPattern()[i]).append("  ");
+                    }
+                }
+            }
+
+            System.out.println(line);
+        }
     }
 }
